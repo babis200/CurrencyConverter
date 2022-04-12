@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0fcb0543-aada-42f2-9400-76342c3f541a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AppDB.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AppDB.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
+  </ItemGroup>
+
+</Project>
