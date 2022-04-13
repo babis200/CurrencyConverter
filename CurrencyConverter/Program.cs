@@ -1,3 +1,5 @@
+using CurrencyConverter.Services;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -11,19 +13,15 @@ namespace CurrencyConverter
         [STAThread]
         static void Main()
         {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables()
-                .Build();
+            ServiceCollection serviceCollection = new ServiceCollection();
 
-            string connString = config.GetConnectionString("SQLiteConnection");
-
-
+            serviceCollection.connectionString = "Data Source=.\\AppDB.db;Version=3;";
+            serviceCollection.fastFOREX = "f0099a65ea-5b6494a5ac-ra8iig";
+            
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginView());
+            Application.Run(new MainView(serviceCollection));
         }
     }
 }
