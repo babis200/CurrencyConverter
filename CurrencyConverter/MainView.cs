@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace CurrencyConverter
 {
     public partial class MainView : Form
     {
-        List<ExchangeRate> rates = new List<ExchangeRate>();
+        List<ExchangeRate> _rates = new List<ExchangeRate>();
         
         ServiceCollection _services;
 
@@ -48,17 +49,19 @@ namespace CurrencyConverter
             string from = fromComboBox.SelectedValue?.ToString();
 
 
-            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
-            UpdateRates();
+            _rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
+            UpdateView();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void UpdateRates()
+        private void UpdateView()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = rates;
+            foreach (PropertyInfo propertyInfo in _rates.Last().Results.GetType().GetProperties())
+            {
+                
+            }
         }
 
 
@@ -66,17 +69,7 @@ namespace CurrencyConverter
         {
             //TODO - Validate selected date is not > 14 days older
         }
-
-        private async void fromComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var date = dateTimePicker1.Value.Date;
-            string from = fromComboBox.SelectedValue?.ToString();
-            string to = toComboBox.SelectedValue?.ToString();
-
-
-            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
-            UpdateRates();
-        }
+                
     }
 
     /// <summary>

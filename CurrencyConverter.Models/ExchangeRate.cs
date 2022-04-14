@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +11,14 @@ namespace CurrencyConverter.Models
 {
     public class ExchangeRate
     {
-        public DateTime date { get; set; }
+        [JsonProperty("date")]
+        public DateTime Date { get; set; }
 
-        public string @base { get; set; }
+        [JsonProperty("base")]
+        public string from { get; set; }
 
-        public int ms { get; set; }
-
-        public Results results { get; set; }
+        [JsonProperty("results")]
+        public Results Results { get; set; }
     }
     public class Results
     {
@@ -155,7 +158,7 @@ namespace CurrencyConverter.Models
         public double TZS { get; set; }
         public double UAH { get; set; }
         public double UGX { get; set; }
-        public int USD { get; set; }
+        public double USD { get; set; }
         public double UYU { get; set; }
         public double UZS { get; set; }
         public double VND { get; set; }

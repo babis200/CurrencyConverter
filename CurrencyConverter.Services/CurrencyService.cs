@@ -38,13 +38,7 @@ namespace CurrencyConverter.Services
             request.AddParameter("date", date.ToString("yyyy-MM-dd"));
             request.AddParameter("from", from);
             var response = await client.GetAsync(request);
-            ExchangeRate rate = new ExchangeRate();
-            var dynamic = JsonConvert.DeserializeObject<dynamic>(response.Content);
-
-            rate.date = dynamic.date;
-            rate.ms = dynamic.ms;
-            rate.@base = dynamic.@base;
-            rate.results = JsonConvert.DeserializeObject<Results>(dynamic.results);
+            var rate = JsonConvert.DeserializeObject<ExchangeRate>(response.Content);
 
             return rate;
         }
