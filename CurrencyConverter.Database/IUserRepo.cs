@@ -6,22 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using static CurrencyConverter.Models.UserModel;
 
 namespace CurrencyConverter.Database
 {
     public interface IUserRepo
     {
-        public void Create(UserModel user);
+        public void Add(UserModel user);
 
         public void Update(UserModel user);
 
-        public void Delete(Usernames username);
+        public void Delete(string username);
 
         public IEnumerable<UserModel> GetAll();
 
-        public UserModel Get(Usernames username);
+        public UserModel Get(string username);
 
-        public string GetConnectionString(string name = "SQLiteConnection");
     }
 }

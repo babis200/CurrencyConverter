@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CurrencyConverter.Models;
+using CurrencyConverter.Services;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +11,71 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using static CurrencyConverter.Models.UserModel;
+
 namespace CurrencyConverter
 {
     public partial class LoginView : Form
     {
-        public LoginView()
+        private ServiceCollection _services;
+        public LoginView(ServiceCollection services)
         {
             InitializeComponent();
+
+            _services = services;
+            usernameComboBox.DataSource = Enum.GetValues(typeof(Usernames));
+        }
+
+        private void buttonShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            passwordTextBox.PasswordChar = (char)0;
+        }
+
+        private void buttonShowPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            passwordTextBox.PasswordChar = '*';
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            //Validate password 
+            if (string.IsNullOrWhiteSpace(passwordTextBox.Text))
+            {
+                MessageBox.Show("Το Password δεν μπορεί να είναι κενό", "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return;
+            }
+
+            UserModel user = new UserModel();
+            user.Username = (Usernames)usernameComboBox.SelectedValue;
+            user.Password = passwordTextBox.Text;
+
+            if (_services.UserService.Get(usernameComboBox.Text) == null)
+            {
+                try
+                {
+                    _services.UserService.Add(user);
+                    MainView mainView = new MainView(_services, user);
+                    mainView.Show();
+                    this.Close();
+                    return;
+
+                }
+                catch (Exception ex)
+                {
+                    //TODO - can be improved
+                    MessageBox.Show(ex.Message, "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }                
+            }
+
+            if(_services.UserService.ValidateUser(user))
+            {
+                MainView mainView = new MainView(_services, user);
+                mainView.ShowDialog();
+            }
+            else
+                MessageBox.Show("Λάθος Username ή Password.", "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 }

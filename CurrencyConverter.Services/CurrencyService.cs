@@ -17,6 +17,11 @@ namespace CurrencyConverter.Services
 {
     public class CurrencyService
     {
+        private string _apiKey;
+        public CurrencyService(string apiKey)
+        {
+            _apiKey = apiKey;
+        }
 
         /// <summary>
         /// 
@@ -24,10 +29,10 @@ namespace CurrencyConverter.Services
         /// <param name="date"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public async Task<ExchangeRate> HistoricalExchangeRate(DateTime date, string from, string key)
+        public async Task<ExchangeRate> HistoricalExchangeRate(DateTime date, string from)
         {
 
-            var client = new RestClient($"https://api.fastforex.io/historical?api_key={key}");
+            var client = new RestClient($"https://api.fastforex.io/historical?api_key={_apiKey}");
             var request = new RestRequest();
             request.AddHeader("Accept", "application/json");
             request.AddParameter("date", date.ToString("yyyy-MM-dd"));

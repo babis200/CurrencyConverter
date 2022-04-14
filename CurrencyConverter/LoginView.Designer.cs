@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.usernameComboBox = new System.Windows.Forms.ComboBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.showPasswordButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameComboBox = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.loginButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -55,17 +57,10 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 238);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 178);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 57);
-            this.panel1.TabIndex = 0;
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.passwordLabel);
+            this.panel2.Controls.Add(this.usernameLabel);
             this.panel2.Controls.Add(this.showPasswordButton);
             this.panel2.Controls.Add(this.passwordTextBox);
             this.panel2.Controls.Add(this.usernameComboBox);
@@ -75,38 +70,69 @@
             this.panel2.Size = new System.Drawing.Size(260, 169);
             this.panel2.TabIndex = 1;
             // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(73, 75);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(57, 15);
+            this.passwordLabel.TabIndex = 4;
+            this.passwordLabel.Text = "Password";
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(73, 31);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(60, 15);
+            this.usernameLabel.TabIndex = 3;
+            this.usernameLabel.Text = "Username";
+            // 
+            // showPasswordButton
+            // 
+            this.showPasswordButton.Image = global::CurrencyConverter.Properties.Resources.icons8_uchiha_eyes_16;
+            this.showPasswordButton.Location = new System.Drawing.Point(210, 92);
+            this.showPasswordButton.Name = "showPasswordButton";
+            this.showPasswordButton.Size = new System.Drawing.Size(22, 23);
+            this.showPasswordButton.TabIndex = 2;
+            this.showPasswordButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseDown);
+            this.showPasswordButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseUp);
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(73, 92);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(121, 23);
+            this.passwordTextBox.TabIndex = 1;
+            // 
             // usernameComboBox
             // 
+            this.usernameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.usernameComboBox.FormattingEnabled = true;
-            this.usernameComboBox.Location = new System.Drawing.Point(49, 41);
+            this.usernameComboBox.Location = new System.Drawing.Point(73, 49);
             this.usernameComboBox.Name = "usernameComboBox";
             this.usernameComboBox.Size = new System.Drawing.Size(121, 23);
             this.usernameComboBox.TabIndex = 0;
             // 
-            // passwordTextBox
+            // panel1
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(49, 84);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(106, 23);
-            this.passwordTextBox.TabIndex = 1;
+            this.panel1.Controls.Add(this.loginButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 178);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(260, 57);
+            this.panel1.TabIndex = 0;
             // 
-            // showPasswordButton
+            // loginButton
             // 
-            this.showPasswordButton.Location = new System.Drawing.Point(165, 86);
-            this.showPasswordButton.Name = "showPasswordButton";
-            this.showPasswordButton.Size = new System.Drawing.Size(75, 23);
-            this.showPasswordButton.TabIndex = 2;
-            this.showPasswordButton.Text = "button1";
-            this.showPasswordButton.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(133, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.loginButton.Location = new System.Drawing.Point(95, 16);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(75, 23);
+            this.loginButton.TabIndex = 3;
+            this.loginButton.Text = "Log In";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // LoginView
             // 
@@ -117,9 +143,9 @@
             this.Name = "LoginView";
             this.Text = "LoginView";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -132,6 +158,8 @@
         private ComboBox usernameComboBox;
         private Button showPasswordButton;
         private TextBox passwordTextBox;
-        private Button button2;
+        private Button loginButton;
+        private Label passwordLabel;
+        private Label usernameLabel;
     }
 }

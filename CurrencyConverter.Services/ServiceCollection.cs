@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CurrencyConverter.Database;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +10,22 @@ namespace CurrencyConverter.Services
 {
     public class ServiceCollection
     {
-        public string connectionString;
+        public string _connectionString;
 
-        public string fastFOREX;
+        public string _fastFOREX;
 
         public CurrencyService CurrencyService;
 
         public UserService UserService;
 
-        public ServiceCollection()
+        public ServiceCollection(string conString, string key)
         {
-            CurrencyService = new CurrencyService();
+            _connectionString = conString;
+            _fastFOREX = key;
 
-            UserService = new UserService();
+            CurrencyService = new CurrencyService(_fastFOREX);
+
+            UserService = new UserService(new UserDB(_connectionString));
         }
     }
 }

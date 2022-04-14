@@ -13,15 +13,12 @@ namespace CurrencyConverter
         [STAThread]
         static void Main()
         {
-            ServiceCollection serviceCollection = new ServiceCollection();
+            ServiceCollection serviceCollection = new ServiceCollection("Data Source=.\\AppDB.db;", "f0099a65ea-5b6494a5ac-ra8iig");
 
-            serviceCollection.connectionString = "Data Source=.\\AppDB.db;Version=3;";
-            serviceCollection.fastFOREX = "f0099a65ea-5b6494a5ac-ra8iig";
-            
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainView(serviceCollection));
+            Application.Run(new LoginView(serviceCollection));
         }
     }
 }

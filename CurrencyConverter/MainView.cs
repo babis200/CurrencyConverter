@@ -21,14 +21,17 @@ namespace CurrencyConverter
     {
         List<ExchangeRate> rates = new List<ExchangeRate>();
         
-        ServiceCollection _services = new ServiceCollection();
-        public MainView(ServiceCollection services)
+        ServiceCollection _services;
+
+        public MainView(ServiceCollection services, UserModel user)
         {
             InitializeComponent();
 
             _services = services;
             fromComboBox.DataSource = Enum.GetValues(typeof(Currency));
             //toComboBox.DataSource = Enum.GetValues(typeof(Currency));
+
+            this.Text = $"Welcome, {user.Username}";
 
             fromComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
             //toComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
@@ -45,7 +48,7 @@ namespace CurrencyConverter
             string from = fromComboBox.SelectedValue?.ToString();
 
 
-            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from, _services.fastFOREX));
+            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
             UpdateRates();
         }
 
@@ -71,7 +74,7 @@ namespace CurrencyConverter
             string to = toComboBox.SelectedValue?.ToString();
 
 
-            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from, _services.fastFOREX));
+            rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
             UpdateRates();
         }
     }
