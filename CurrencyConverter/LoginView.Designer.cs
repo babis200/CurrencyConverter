@@ -91,7 +91,7 @@
             // showPasswordButton
             // 
             this.showPasswordButton.Image = global::CurrencyConverter.Properties.Resources.icons8_uchiha_eyes_16;
-            this.showPasswordButton.Location = new System.Drawing.Point(210, 92);
+            this.showPasswordButton.Location = new System.Drawing.Point(210, 108);
             this.showPasswordButton.Name = "showPasswordButton";
             this.showPasswordButton.Size = new System.Drawing.Size(22, 23);
             this.showPasswordButton.TabIndex = 2;
@@ -100,11 +100,12 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(73, 92);
+            this.passwordTextBox.Location = new System.Drawing.Point(73, 108);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(121, 23);
             this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             // 
             // usernameComboBox
             // 
@@ -113,7 +114,7 @@
             this.usernameComboBox.Location = new System.Drawing.Point(73, 49);
             this.usernameComboBox.Name = "usernameComboBox";
             this.usernameComboBox.Size = new System.Drawing.Size(121, 23);
-            this.usernameComboBox.TabIndex = 0;
+            this.usernameComboBox.TabIndex = 10;
             // 
             // panel1
             // 

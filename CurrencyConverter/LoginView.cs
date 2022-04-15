@@ -77,5 +77,11 @@ namespace CurrencyConverter
                 MessageBox.Show("Λάθος Username ή Password.", "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                loginButton_Click(loginButton, new EventArgs());
+        }
     }
 }

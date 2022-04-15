@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,10 +59,31 @@ namespace CurrencyConverter
         /// </summary>
         private void UpdateView()
         {
-            foreach (PropertyInfo propertyInfo in _rates.Last().Results.GetType().GetProperties())
+            foreach (ExchangeRate rate in _rates)
+            {
+                foreach (KeyValuePair<string, string> res in rate.Results)
+                {
+                    dataGridView1.Rows.Add(
+                        rate.Date.ToString("dd/MM/yyyy"),
+                        rate.from,
+                        res.Key,
+                        res.Value
+                        );
+
+                }
+            }
+            
+
+            /*//TODO - kinda bad method should be improved
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            foreach (var rate in _rates.OrderByDescending(x => x.Date))
             {
                 
-            }
+
+            }*/
+
         }
 
 

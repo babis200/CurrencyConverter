@@ -18,7 +18,7 @@ namespace CurrencyConverter.Models
         public string from { get; set; }
 
         [JsonProperty("results")]
-        public Results Results { get; set; }
+        public Dictionary<string, string> Results { get; set; }
     }
     public class Results
     {
