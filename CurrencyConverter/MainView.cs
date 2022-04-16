@@ -1,28 +1,12 @@
 ﻿using CurrencyConverter.Models;
 using CurrencyConverter.Services;
 
-using Microsoft.VisualBasic;
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 namespace CurrencyConverter
 {
     public partial class MainView : Form
     {
         List<ExchangeRate> _rates = new List<ExchangeRate>();
-        
+
         ServiceCollection _services;
 
         public MainView(ServiceCollection services, UserModel user)
@@ -72,7 +56,7 @@ namespace CurrencyConverter
 
                 }
             }
-            
+
 
             /*//TODO - kinda bad method should be improved
             dataGridView1.Rows.Clear();
@@ -91,7 +75,7 @@ namespace CurrencyConverter
         {
             //TODO - Validate selected date is not > 14 days older
         }
-                
+
     }
 
     /// <summary>

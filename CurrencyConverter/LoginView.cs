@@ -1,16 +1,6 @@
 ﻿using CurrencyConverter.Models;
 using CurrencyConverter.Services;
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using static CurrencyConverter.Models.UserModel;
 
 namespace CurrencyConverter
@@ -65,10 +55,10 @@ namespace CurrencyConverter
                     //TODO - can be improved
                     MessageBox.Show(ex.Message, "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-                }                
+                }
             }
 
-            if(_services.UserService.ValidateUser(user))
+            if (_services.UserService.ValidateUser(user))
             {
                 MainView mainView = new MainView(_services, user);
                 mainView.ShowDialog();

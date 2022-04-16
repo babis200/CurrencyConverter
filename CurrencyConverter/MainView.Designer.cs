@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -58,8 +58,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.88889F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.55556F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.44444F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(532, 450);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
@@ -67,9 +67,9 @@
             // 
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 142);
+            this.panel2.Location = new System.Drawing.Point(3, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(526, 305);
+            this.panel2.Size = new System.Drawing.Size(526, 365);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -88,7 +88,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(526, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(526, 365);
             this.dataGridView1.TabIndex = 9;
             // 
             // date
@@ -102,8 +102,8 @@
             // 
             this.fromCurrency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.fromCurrency.DataPropertyName = "from";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.fromCurrency.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.fromCurrency.DefaultCellStyle = dataGridViewCellStyle1;
             this.fromCurrency.HeaderText = "Από";
             this.fromCurrency.Name = "fromCurrency";
             this.fromCurrency.ReadOnly = true;
@@ -112,8 +112,8 @@
             // 
             this.toCurrency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.toCurrency.DataPropertyName = "Results";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.toCurrency.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.toCurrency.DefaultCellStyle = dataGridViewCellStyle2;
             this.toCurrency.HeaderText = "Σε";
             this.toCurrency.Name = "toCurrency";
             this.toCurrency.ReadOnly = true;
@@ -134,7 +134,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(526, 133);
+            this.panel3.Size = new System.Drawing.Size(526, 73);
             this.panel3.TabIndex = 1;
             // 
             // label1

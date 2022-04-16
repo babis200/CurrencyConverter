@@ -1,13 +1,7 @@
 ﻿using CurrencyConverter.Database;
 using CurrencyConverter.Models;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
-using static CurrencyConverter.Models.UserModel;
 
 namespace CurrencyConverter.Services
 {

@@ -1,14 +1,6 @@
 ﻿using CurrencyConverter.Models;
 
-using Microsoft.Extensions.Configuration;
-
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CurrencyConverter.Database
 {
@@ -30,7 +22,7 @@ namespace CurrencyConverter.Database
                 command.Parameters.AddWithValue("@name", Enum.GetName(typeof(UserModel.Usernames), user.Username));
                 command.Parameters.AddWithValue("@pwd", user.Password);
                 connection.Open();
-                
+
                 command.ExecuteScalar();
             }
         }
@@ -56,7 +48,7 @@ namespace CurrencyConverter.Database
                     {
                         return new UserModel(reader.GetString(0), reader.GetString(1));
                     }
-                }              
+                }
                 reader.Close();
                 return null;
             }

@@ -1,8 +1,5 @@
 using CurrencyConverter.Services;
 
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-
 namespace CurrencyConverter
 {
     internal static class Program
