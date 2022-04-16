@@ -17,7 +17,6 @@ namespace CurrencyConverter.Services
         public string EncryptPassword(string password)
         {
             byte[] data = Encoding.ASCII.GetBytes(password);
-            //TODO - Create better hash
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
             String hash = Encoding.ASCII.GetString(data);
 

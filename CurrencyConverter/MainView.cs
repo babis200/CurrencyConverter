@@ -18,23 +18,28 @@ namespace CurrencyConverter
             //toComboBox.DataSource = Enum.GetValues(typeof(Currency));
 
             this.Text = $"Welcome, {user.Username}";
-
             fromComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
             //toComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
 
             //Το API δέχεται ημ/νιες μονο μέχρι 14 μέρες πριν
             dateTimePicker1.MinDate = DateTime.Today.AddDays(-14);
-            dateTimePicker1.MaxDate = DateTime.Today;
+            dateTimePicker1.MaxDate = DateTime.UtcNow;
         }
-
 
         private async void ComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             var date = dateTimePicker1.Value.Date;
             string from = fromComboBox.SelectedValue?.ToString();
 
-
-            _rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
+            try
+            {
+                _rates.Add(await _services.CurrencyService.HistoricalExchangeRate(date, from));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Σφάλμα κλήσης fastFOREX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             UpdateView();
         }
 
@@ -45,6 +50,7 @@ namespace CurrencyConverter
         {
             foreach (ExchangeRate rate in _rates)
             {
+                if(rate.Results is null) continue;
                 foreach (KeyValuePair<string, string> res in rate.Results)
                 {
                     dataGridView1.Rows.Add(
@@ -53,28 +59,10 @@ namespace CurrencyConverter
                         res.Key,
                         res.Value
                         );
-
                 }
             }
-
-
-            /*//TODO - kinda bad method should be improved
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-
-            foreach (var rate in _rates.OrderByDescending(x => x.Date))
-            {
-                
-
-            }*/
-
         }
 
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            //TODO - Validate selected date is not > 14 days older
-        }
 
     }
 

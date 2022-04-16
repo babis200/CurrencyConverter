@@ -52,7 +52,6 @@ namespace CurrencyConverter
                 }
                 catch (Exception ex)
                 {
-                    //TODO - can be improved
                     MessageBox.Show(ex.Message, "Σφάλμα σύνδεσης", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
